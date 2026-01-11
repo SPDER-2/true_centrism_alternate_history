@@ -23,6 +23,7 @@ Q.started = 1;
 Q.time = 1;
 Q.year = 1928;
 Q.month = 1;
+Q.week = 1;
 // how many actions have been taken this month?
 Q.month_actions = 0;
 
@@ -32,13 +33,12 @@ Q.historical_mode = 0;
 // old demographics
 Q.old_demographics = 0;
 // use decimals for reichstag seats
-// TODO: not yet implemented
-Q.use_decimals = 0;
+Q.use_decimals = 1;
 
 // party resources
-Q.resources = 2;
+Q.resources = 3;
 // party dues
-Q.dues = 2;
+Q.dues = 4;
 
 // the state of the party
 // overall dissent reduces every increase in party support.
@@ -46,44 +46,33 @@ Q.dissent = 0.05;
 Q.dissent_percent = 5;
 
 // factions
-Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
-// should this be normalized to 100%?
+Q.factions = ['left', 'center', 'clerical', 'christian', 'right'];
 Q.left_strength = 15;
-Q.left_dissent = 20;
+Q.left_dissent = 15;
 Q.center_strength = 30;
-Q.center_dissent = 0;
-Q.labor_strength = 25;
-Q.labor_dissent = 5;
-Q.reformist_strength = 25;
-Q.reformist_dissent = 5;
-Q.neorevisionist_strength = 5;
-Q.neorevisionist_dissent = 10;
+Q.center_dissent = 5;
+Q.clerical_strength = 20;
+Q.clerical_dissent = 5;
+Q.christian_strength = 15;
+Q.christian_dissent = 20;
+Q.right_strength = 5;
+Q.right_dissent = 25;
 
 // secret events...
-Q.unions_independent = 0;
+Q.church_independent = 0;
 Q.centrists_resign = 0;
 Q.left_split = 0;
-Q.reformists_resigned = 0;
+Q.christian_split = 0;
+Q.right_split = 0
 
-// have we discovered neorevisionism?
-Q.neorevisionism = 0;
-
-// crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
+// crisis_urgency indicates how seriously Zentrum is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
-// nazi_urgency indicates how seriously the SPD takes the nazis - scale from 0 to 10.
-Q.nazi_urgency = 0;
-// radicalization indicates how radical the SPD's rhetoric is - scale from 0 to 10.
-Q.radicalization = 0;
 // Support for the WTB plan and proto-Keynesian works creation plans in general
 Q.wtb_support = 0;
-// Support for Pacifism within the SPD relative to 1928
-Q.pacifism = 0;
-// Support for democratic reform within the SPD relative to 1928
+// Support for democracy within Zentrum relative to 1928
 Q.democratization = 0;
-// Support for a communist coalition relative to 1928
-Q.communist_coalition = 0;
 // economic_plan: have we adopted *any* economic plan?
-// 1 - WTB plan, 2 - AfA-bund plan, 3 - radical plan (mass nationalization of industries)
+// 0 - Austerity, 1 - Limited Public Works, 2 - Massive Public Works
 Q.economic_plan = 0;
 // have we officially adopted the WTB plan?
 Q.wtb_adopted = 0;
@@ -101,32 +90,39 @@ Q.moderate_plan_adopted = 0;
 // organizations
 
 // inter-party relations
-Q.z_relation = 50;
-Q.kpd_relation = 25;
+Q.kpd_relation = 10;
+Q.spd_relation = 40;
 Q.ddp_relation = 60;
-Q.dvp_relation = 35;
-// DNVP and NSDAP are invariably hostile
-Q.DNVP_relation = 10;
-Q.NSDAP_relation = 0;
+Q.dvp_relation = 45;
+Q.DNVP_relation = 35;
+Q.NSDAP_relation = 5;
 
 Q.kpd_leader = "Thälmann";
-// alternative is the Conciliators as party leader
-Q.kpd_party_leader = "Thälmann";
-Q.z_leader = "Brüning";
-// party leader - can be Ludwig Kaas, Joseph Joos, or Adam Stegerwald after the 1928 December conference. Joos will be most friendly to the SPD.
 Q.z_party_leader = "Marx";
+Q.ddp_party_leader = "Koch-Weser";
+Q.dvp_party_leader = "Stresemann";
+Q.dnvp_party_leader = "Westarp";
 Q.nsdap_leader = "Hitler";
 
 // hmm... maybe we can play nice with Hindenburg???
-Q.hindenburg_relation = 25;
-// whether or not hindenburg can dismiss the government.
-Q.hindenburg_enabled = 0;
+Q.hindenburg_relation = 50;
+Q.hindenburg_no_spd = 0;
 
-
-// Does the SPD lead in Prussia?
+// Prussian Government
 Q.spd_prussia = 1;
-// Options: spd, z, dnvp, papen, nsdap
-Q.prussian_government = "SPD";
+Q.prussia_leader = "Braun"
+Q.in_right_coalition_prussia = 0;
+Q.in_weimar_coalition_prussia = 1;
+Q.in_grand_coalition_prussia = 0;
+Q.in_popular_front_prussia = 0;
+Q.in_left_front_prussia = 0;
+Q.in_spd_majority_prussia = 0;
+Q.in_center_right_coalition_prussia = 0;
+Q.in_minority_weimar_coalition_prussia = 0;
+Q.in_minority_grand_coalition_prussia = 0;
+Q.dvp_prussia_asked = 0;
+Q.in_far_right_coalition_prussia = 0;
+
 
 // The array of forces - paramilitary groups
 // Number of members in 1928 (in thousands)
@@ -140,7 +136,7 @@ Q.sh_militancy = 0.5;
 Q.sh_banned = 0;
 Q.sh_banned_prussia = 0;
 Q.sa_strength = 80;
-Q.sa_militancy = 0.5;
+Q.sa_militancy = 0.75;
 Q.sa_banned = 0;
 Q.sa_banned_prussia = 0;
 Q.rfb_strength = 130;
@@ -165,10 +161,8 @@ Q.reichswehr_loyalty = 0.2;
 
 // popular opinion
 // national ideology - on a binary scale
-// nationalism vs internationalism or pacifism or non-nationalism
+// nationalism vs pacifism 
 Q.nationalism = 60;
-// socialism vs capitalism
-Q.socialism = 40;
 // pro-republic vs anti-republic
 Q.pro_republic = 59;
 
@@ -187,12 +181,12 @@ Q.constitutional_protection = 0;
 Q.kpd_banned = 0;
 Q.nsdap_banned = 0;
 
-// coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
+// coups and capital strikes happen when you upset the right or the capitalists too much with your policies. 
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
 Q.coup_progress = 0;
 Q.capital_strike_progress = 0;
 
-Q.budget = 4;
+Q.budget = 1;
 
 // Proportion of different social groups
 // source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 45, table 3.4 - using 1925 figures
@@ -235,89 +229,110 @@ Q.sapd_formed = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_spd = 60;
-Q.workers_kpd = 20;
+
+Q.workers_spd = 58;
+Q.workers_kpd = 22;
 Q.workers_z = 5;
-Q.workers_ddp = 0;
+Q.workers_ddp = 2;
 Q.workers_dvp = 0;
-Q.workers_dnvp = 5;
+Q.workers_dnvp = 6;
 Q.workers_nsdap = 0;
 Q.workers_other = 10;
 
-Q.old_middle_spd = 5;
-Q.old_middle_kpd = 0;
-Q.old_middle_z = 5;
-Q.old_middle_ddp= 10;
-Q.old_middle_dvp = 25;
-Q.old_middle_dnvp = 25;
-Q.old_middle_nsdap = 10;
-Q.old_middle_other = 10;
-
-Q.new_middle_spd = 5;
+Q.new_middle_spd = 8;
 Q.new_middle_kpd = 1;
-Q.new_middle_z = 10;
-Q.new_middle_ddp= 25;
-Q.new_middle_dvp = 25;
+Q.new_middle_z = 8;
+Q.new_middle_ddp = 23;
+Q.new_middle_dvp = 22;
 Q.new_middle_dnvp = 10;
-Q.new_middle_nsdap = 5;
-Q.new_middle_other = 15;
+Q.new_middle_nsdap = 4;
+Q.new_middle_other = 22;
 
-Q.rural_spd = 10;
+Q.old_middle_spd = 4;
+Q.old_middle_kpd = 0;
+Q.old_middle_z = 6;
+Q.old_middle_ddp = 10;
+Q.old_middle_dvp = 27;
+Q.old_middle_dnvp = 24;
+Q.old_middle_nsdap = 9;
+Q.old_middle_other = 20;
+
+Q.rural_spd = 9;
 Q.rural_kpd = 0;
 Q.rural_z = 5;
-Q.rural_ddp= 5;
+Q.rural_ddp = 4;
 Q.rural_dvp = 15;
-Q.rural_dnvp = 45;
-Q.rural_nsdap = 5;
-Q.rural_other = 10;
+Q.rural_dnvp = 46;
+Q.rural_nsdap = 3;
+Q.rural_other = 16;
 
-Q.unemployed_spd = 25;
-Q.unemployed_kpd = 55;
+Q.unemployed_spd = 21;
+Q.unemployed_kpd = 50;
 Q.unemployed_z = 1;
 Q.unemployed_ddp = 0;
 Q.unemployed_dvp = 0;
-Q.unemployed_dnvp = 5;
-Q.unemployed_nsdap = 15;
-Q.unemployed_other = 9;
+Q.unemployed_dnvp = 4;
+Q.unemployed_nsdap = 13;
+Q.unemployed_other = 7;
 
-Q.catholics_spd = 15;
+Q.catholics_spd = 22;
 Q.catholics_kpd = 2;
-Q.catholics_z = 50;
+Q.catholics_z = 47;
 Q.catholics_ddp = 0;
 Q.catholics_dvp = 5;
-Q.catholics_dnvp = 5;
+Q.catholics_dnvp = 6;
 Q.catholics_nsdap = 0;
-Q.catholics_other = 12;
-
+Q.catholics_other = 16;
 
 // Current Reichstag composition
 // % of Reichstag in Jan 1928
-// source: wikipedia
-// note: the Z figures also include the BVP (Bavarian people's party)
-// since they were ideologically similar, but they were separate parties.
-// They did not have a CDU/CSU-style relationship.
-Q.spd_r = 26;
-Q.kpd_r = 9;
-Q.z_r = 17;
-Q.ddp_r = 6;
-Q.dvp_r = 10;
-Q.dnvp_r = 20;
+// the BVP is complicated. For now, they just take around 21% of your seats and votes. Dam bavarians ...
+Q.spd_r = 26.5;
+Q.kpd_r = 9.1;
+Q.z_r = 17.8;
+Q.ddp_r = 6.5;
+Q.dvp_r = 10.3;
+Q.dnvp_r = 20.9;
 Q.nsdap_r = 3;
-Q.other_r = 9;
+Q.other_r = 5.9;
+Q.bvp_r = 3.9;
+Q.wp_r = 2.4;
+Q.cnblp_r = 1.7;
+Q.true_other_r = 1.8;
 
 // diff from prev
-Q.old_spd_r = 26;
-Q.old_kpd_r = 9;
-Q.old_z_r = 17;
-Q.old_ddp_r = 6;
-Q.old_dvp_r = 10;
-Q.old_dnvp_r = 20;
+Q.old_spd_r = 26.5;
+Q.old_kpd_r = 9.1;
+Q.old_z_r = 17.8;
+Q.old_ddp_r = 6.5;
+Q.old_dvp_r = 10.3;
+Q.old_dnvp_r = 20.9;
 Q.old_nsdap_r = 3;
-Q.old_other_r = 9;
+Q.old_other_r = 5.9;
+Q.old_bvp_r = 3.9;
+Q.old_wp_r = 2.4;
+Q.old_cnblp_r = 1.7;
+Q.old_true_other_r = 1.8;
 
-// sapd isn't formed yet, but it may be formed
+// old election votes
+Q.previous_spd_last_election_votes = 26;
+Q.previous_kpd_last_election_votes = 9;
+Q.previous_z_last_election_votes = 17.3;
+Q.previous_ddp_last_election_votes = 6.3;
+Q.previous_dvp_last_election_votes = 10.1;
+Q.previous_dnvp_last_election_votes = 20.5;
+Q.previous_nsdap_last_election_votes = 3;
+Q.previous_other_last_election_votes = 7.8;
+Q.previous_bvp_last_election_votes = 3.7;
+
+// sapd isn't formed yet, but it may be formed by 
 Q.sapd_r = 0;
 Q.old_sapd_r = 0;
+
+// zentrum right can form the League of German Catholics Cross and Eagle. abbreviation is ldkka 
+
+Q.ldkka_r = 0
+Q.old_ldkka_r = 0
 
 // for changing the DDP's name to the DStP
 Q.ddp_name = "DDP";
@@ -338,43 +353,58 @@ Q.chancellor_party = 'Z';
 Q.spd_in_government = 0;
 Q.z_in_government = 1;
 Q.ddp_in_government = 0;
+Q.bvp_in_government = 1;
 Q.dvp_in_government = 1;
 Q.dnvp_in_government = 1;
 Q.kpd_in_government = 0;
 Q.nsdap_in_government = 0;
 
-Q.in_right_coalition = 0;
+// Right wing coalition = Z + BVP + DVP + Others + DNVP 
+// Current government
+Q.in_right_coalition = 1;
+// Bourgeois coalition = Z + BVP + DDP + DVP + Others + KVP
+Q.in_bourgeois_coalition = 0;
+// Center right coalition = Z + DDP + BVP + DVP + Others + DNVP
+Q.in_center_right_coalition = 0;
 // Weimar coalition = SPD + Z + DDP
 Q.in_weimar_coalition = 0;
 // Grand coalition = SPD + Z + BVP + DDP + DVP
-// also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others
+// also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others + KVP
 Q.in_grand_coalition = 0;
 // Popular front = SPD + KPD + Z + DDP
 Q.in_popular_front = 0;
-// left coalition = SPD + KPD + left-splinters
+// left coalition = SPD + KPD + SAPD
 Q.in_left_front = 0;
-// emergency government containing the SPD: only president Braun can do this.
-Q.in_emergency_government = 0;
-Q.in_spd_majority = 0;
+// Black-Brown Coalition = Z + NSDAP
+Q.in_black_brown_coalition = 0;
+//Strasser-Right coalition = Z + BVP + DVP + Others + DNVP + DSU
+Q.in_strasser_right_coaltion = 0 
+
+
+// Bruning led emergency government. Only Bourgeoise and Reactionary presidents or Hindenburg can do this.   
+Q.in_bruning_emergency_government = 0;
 Q.grand_coalition_failed = 0;
-// if the SPD is ruling as part of a minority government
+// Is Zentrum leading a minority government?
 Q.in_minority_government = 0;
+// Is the SPD leading it's own emergency government?
+Q.spd_minority_government = 0;
+
 // national unity governmet
 
-// if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
-Q.coalition_dissent = 0;
-// dissent from the KPD, in a popular front or left front government
-Q.kpd_coalition_dissent = 0;
+// disssent for the parties to your right like the DVP and DNVP, 
+Q.right_coalition_dissent = 2;
+// dissent from the SPD, in a popular front, weimar coalition, grand coalition or national unity government
+Q.left_coalition_dissent = 0;
+// dissent from the nazis if you manage to get them in government
+Q.nazi_coalition_dissent = 0;
+// dissent from the KPD in a volksfront
+Q.kpd_coalition_dissent = 0
 
 // does the SPD tolerate the government even if it is not a participant?
 Q.spd_toleration = 0;
 
-// is the current government a presidential minority government?
-Q.minority_government = 0;
-
 // ministries - which parties control the ministries?
 // starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
-// is the agricultural ministry useful at all?
 Q.foreign_minister = 'Streseman';
 Q.foreign_minister_party = 'DVP';
 Q.interior_minister = 'von Keudell';
@@ -383,7 +413,7 @@ Q.justice_minister = 'Hergt';
 Q.justice_minister_party = 'DNVP';
 Q.labor_minister = 'Brauns';
 Q.labor_minister_party = 'Z';
-Q.reichswehr_minister = 'Groener';
+Q.reichswehr_minister = 'Gessler;
 Q.reichswehr_minister_party = 'I';
 Q.economic_minister = 'Curtius';
 Q.economic_minister_party = 'DVP';
@@ -408,12 +438,14 @@ Q.military_reform = 0;
 Q.womens_rights = 0;
 // level of welfare relative to 1928 (can go negative)
 Q.welfare = 0;
-// level of support for farmers
-Q.agricultural_policy = 0;
+// level of support for farmers reletive to 1928
+Q.eastern_aid = 0;
+Q.agriultural_financing = 0
 Q.land_reform = 0;
-// works-creation programs (i.e. WTB-plan) - how much have they implemented?
+// works-creation programs - how much have they implemented?
 Q.works_program = 0;
-Q.wtb_implemented = 0;
+Q.limited_works_implemented = 0;
+Q.large_works_implemented = 0
 // Relations with the Western countries (France, UK).
 Q.west_relation = 0;
 // Relations with the Eastern countries (Poland, Czechoslovakia)
@@ -422,18 +454,12 @@ Q.east_relation = 0;
 Q.soviet_relation = 0;
 // How much have we exposed the secret rearmament programs?
 Q.rearmament_exposed = 0;
-// reparations vs baseline: young plan is -1.
-Q.reparations = 0;
+// reparations
+Q.reparations = 3;
 Q.reparations_negotiation = 0;
-// nationalization_progress is part of the left economic plan.
-Q.nationalization_progress = 0;
-// socializations is part of the economic democracy card.
-Q.socializations = 0;
-Q.nationalize_budget = 4;
-// have there been any factory takeovers?
-Q.factory_takeovers = 0;
-// progress on the moderate economic plan
-Q.moderate_plan_progress = 0;
+// Young Plan
+Q.young_plan_negotiated = 0
+Q.young_plan_ratified = 0
 // European Union negotiation process
 Q.eu = 0;
 Q.eu_progress = 0;
@@ -593,11 +619,11 @@ For more information on the politics and government of the German Republic, see 
 - @1928_historical: Begin (historical mode)
 
 @1928_easy
-on-arrival: difficulty = -1; resources = 4; dues = 3; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; budget = 5;
+on-arrival: difficulty = -1; resources = 4; dues = 5; rb_strength = 2500; spd_relation = 45; dnvp_relation = 40; dvp_relation = 50; budget = 3;
 go-to: 1928_main
 
 @1928_hard
-on-arrival: difficulty = 1; resources = 0; dues = 1; rb_strength = 1000; reformist_dissent = 25; left_dissent = 30; labor_dissent = 25; center_dissent = 25; z_relation = 41; kpd_relation = 16; dvp_relation = 31; budget = 3;
+on-arrival: difficulty = 1; resources = 1; dues = 2; rb_strength = 1000; right_dissent = 35; left_dissent = 25; clerical_dissent = 15; center_dissent = 15; christian_dissent = 30; dnvp_relation = 28; spd_relation = 35; hindenburg_relations = 40; dvp_relation = 40; budget = 1;
 go-to: 1928_main
 
 @1928_historical
@@ -606,16 +632,17 @@ on-arrival: {!
 Q.difficulty = 2;
 Q.historical_mode = 1;
 Q.resources = 2;
-Q.dues = 1;
+Q.dues = 3;
 Q.rb_strength = 2000;
-Q.reformist_dissent = 25;
-Q.left_dissent = 30;
-Q.labor_dissent = 25;
-Q.center_dissent = 25;
-Q.z_relation = 41;
-Q.kpd_relation = 16;
-Q.dvp_relation = 31;
-Q.budget = 2;
+Q.left_dissent = 15;
+Q.center_dissent = 5;
+Q.clerical_dissent = 5;
+Q.christian_dissent = 20;
+Q.right_dissent = 25;
+Q.spd_relation = 35;
+Q.dnvp_relation = 30;
+Q.dvp_relation = 40
+Q.budget = 0;
 this.state.disableSaves = true;
 !}
 go-to: 1928_main
@@ -629,6 +656,4 @@ go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
 It is a bright time for German democracy. After a period of struggle, inflation is finally under control, and the economy is expanding steadily. In foreign policy, we have reached agreements with the Western powers and the Soviet Union that might make genuine peace a reality. 
 
-Now, the task of Social Democracy is to prepare for the next election. The bourgeois-right government of Wilhelm Marx is unpopular, and we stand to gain. Perhaps the next government will have a socialist majority.
-
-
+However, the status of the Center Party is uncertain. Some want to <span class="tooltip-text" title="The tower is a metaphor for the fact that Zentrum is almost entirely a catholic party. Some have wanted to leave the tower to become an all christian party. This obviously faces the opposition of the leftist and traditionalist factions. Tread Carefully.">leave the tower</span>," while others wish to maintain the status quo. More worringly though, the Marx IV cabinet is unstable and we stand to lose at the next election. Hopefully, future elections will yield a strong, centrist majority.
