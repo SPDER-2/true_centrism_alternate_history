@@ -60,7 +60,7 @@ Q.church_independent = 0;
 Q.centrists_resign = 0;
 Q.left_split = 0;
 Q.christian_split = 0;
-Q.right_split = 0
+Q.right_split = 0;
 
 // crisis_urgency indicates how seriously Zentrum is taking the economic crisis - scale from 0 to 10.
 Q.crisis_urgency = 0;
@@ -107,7 +107,7 @@ Q.hindenburg_no_spd = 0;
 
 // Prussian Government
 Q.spd_prussia = 1;
-Q.prussia_leader = "Braun"
+Q.prussia_leader = "Braun";
 Q.in_right_coalition_prussia = 0;
 Q.in_weimar_coalition_prussia = 1;
 Q.in_grand_coalition_prussia = 0;
@@ -328,8 +328,8 @@ Q.old_sapd_r = 0;
 
 // zentrum right can form the League of German Catholics Cross and Eagle. abbreviation is ldkka 
 
-Q.ldkka_r = 0
-Q.old_ldkka_r = 0
+Q.ldkka_r = 0;
+Q.old_ldkka_r = 0;
 
 // for changing the DDP's name to the DStP
 Q.ddp_name = "DDP";
@@ -375,7 +375,7 @@ Q.in_left_front = 0;
 // Black-Brown Coalition = Z + NSDAP
 Q.in_black_brown_coalition = 0;
 //Strasser-Right coalition = Z + BVP + DVP + Others + DNVP + DSU
-Q.in_strasser_right_coaltion = 0 
+Q.in_strasser_right_coalition = 0;
 
 
 // Bruning led emergency government. Only Bourgeoise and Reactionary presidents or Hindenburg can do this.   
@@ -410,7 +410,7 @@ Q.justice_minister = 'Hergt';
 Q.justice_minister_party = 'DNVP';
 Q.labor_minister = 'Brauns';
 Q.labor_minister_party = 'Z';
-Q.reichswehr_minister = 'Gessler;
+Q.reichswehr_minister = 'Gessler';
 Q.reichswehr_minister_party = 'I';
 Q.economic_minister = 'Curtius';
 Q.economic_minister_party = 'DVP';
@@ -437,7 +437,7 @@ Q.womens_rights = 0;
 Q.welfare = 0;
 // level of support for farmers reletive to 1928
 Q.eastern_aid = 0;
-Q.agriultural_financing = 0
+Q.agricultural_financing = 0;
 Q.land_reform = 0;
 // works-creation programs - how much have they implemented?
 Q.works_program = 0;
@@ -468,8 +468,6 @@ Q.education_science = 0;
 Q.lower_tax_rates = 0;
 Q.upper_tax_rates = 0;
 Q.tariffs = 0;
-
-Q.electoral_threshold = 0;
 
 // our conduct in the government, and the conduct of our coalition opponents.
 // did the SPD vote against the previous government in a vote of no confidence?
@@ -620,7 +618,7 @@ on-arrival: difficulty = -1; resources = 4; dues = 5; rb_strength = 2500; spd_re
 go-to: 1928_main
 
 @1928_hard
-on-arrival: difficulty = 1; resources = 1; dues = 2; rb_strength = 1000; right_dissent = 35; left_dissent = 25; clerical_dissent = 15; center_dissent = 15; christian_dissent = 30; dnvp_relation = 28; spd_relation = 35; hindenburg_relations = 40; dvp_relation = 40; budget = 1;
+on-arrival: difficulty = 1; resources = 1; dues = 2; rb_strength = 1000; right_dissent = 35; left_dissent = 25; clerical_dissent = 15; center_dissent = 15; christian_dissent = 30; dnvp_relation = 28; spd_relation = 35; hindenburg_relation = 40; dvp_relation = 40; budget = 1;
 go-to: 1928_main
 
 @1928_historical
