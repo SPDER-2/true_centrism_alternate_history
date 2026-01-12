@@ -54,6 +54,7 @@ Q.christian_strength = 15;
 Q.christian_dissent = 20;
 Q.right_strength = 5;
 Q.right_dissent = 25;
+Q.hess_dead = 0
 
 // secret events...
 Q.church_independent = 0;
