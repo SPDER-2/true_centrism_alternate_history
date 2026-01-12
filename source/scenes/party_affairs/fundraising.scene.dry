@@ -18,7 +18,6 @@ Dues are based on the amount of dissent in the party. The amount of resources th
 - @increase: Increase dues.
 - @increase_high: Increase dues further
 - @industrial: Secure a loan from the industrialists
-- @state_government: Embezzle money from the Prussian State Government
 - @easy_discard
 
 ---
