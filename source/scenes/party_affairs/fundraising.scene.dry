@@ -18,7 +18,6 @@ Dues are based on the amount of dissent in the party. The amount of resources th
 - @increase: Increase dues.
 - @increase_high: Increase dues
 - @industrial: Secure a loan from the industrialists
-- @state_government: Embezzle money from the Prussian State Government
 - @easy_discard
 
 @maintain
@@ -52,6 +51,6 @@ choose-if: dvp_relation >= 55
 unavailable-subtitle: The industrialists don't trust us enough as we lack enough relations with the DVP. 
 on-arrival: resources += 2; old_middle_z += 3; workers_z -= 8; left_dissent += 8;
 
-Surprisingly, the industrialists have agreed to provide some financial aid to the party. However, this has absolutely enraged the workers who now see us as industrial puppets like the DVP. The left of the party has voiced strong discontent. 
+Surprisingly, the industrialists have agreed to provide some financial aid to the party albiet not as much as the gold and silver flooding into the liberal parties. However, this has absolutely enraged the workers who now see us as industrial puppets like the DVP. The left of the party has voiced strong discontent. 
 
 
