@@ -91,8 +91,8 @@ Q.kpd_relation = 10;
 Q.spd_relation = 40;
 Q.ddp_relation = 60;
 Q.dvp_relation = 45;
-Q.DNVP_relation = 35;
-Q.NSDAP_relation = 5;
+Q.dnvp_relation = 35;
+Q.nsdap_relation = 5;
 
 Q.kpd_leader = "Thälmann";
 Q.z_party_leader = "Marx";
@@ -395,7 +395,7 @@ Q.left_coalition_dissent = 0;
 // dissent from the nazis if you manage to get them in government
 Q.nazi_coalition_dissent = 0;
 // dissent from the KPD in a volksfront
-Q.kpd_coalition_dissent = 0
+Q.kpd_coalition_dissent = 0;
 
 // does the SPD tolerate the government even if it is not a participant?
 Q.spd_toleration = 0;
@@ -442,7 +442,7 @@ Q.land_reform = 0;
 // works-creation programs - how much have they implemented?
 Q.works_program = 0;
 Q.limited_works_implemented = 0;
-Q.large_works_implemented = 0
+Q.large_works_implemented = 0;
 // Relations with the Western countries (France, UK).
 Q.west_relation = 0;
 // Relations with the Eastern countries (Poland, Czechoslovakia)
@@ -455,8 +455,8 @@ Q.rearmament_exposed = 0;
 Q.reparations = 3;
 Q.reparations_negotiation = 0;
 // Young Plan
-Q.young_plan_negotiated = 0
-Q.young_plan_ratified = 0
+Q.young_plan_negotiated = 0;
+Q.young_plan_ratified = 0;
 // European Union negotiation process
 Q.eu = 0;
 Q.eu_progress = 0;
