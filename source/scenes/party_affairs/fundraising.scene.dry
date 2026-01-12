@@ -1,6 +1,6 @@
 title: Fundraising
 new-page: true
-view-if: fundraising_timer <= 0 
+view-if: fundraising_timer <= 0
 on-arrival: fundraising_timer = 6; month_actions += 1
 frequency: 300
 is-card: true
@@ -9,48 +9,88 @@ tags: party_affairs
 
 = Fundraising
 
-For better or for worse, the party cannot exist without money. There are a variety of ways we can gather this money from embezzling from state governments, to securing industrial support to membership dues. 
+For better or for worse, the party cannot exist without money. There are a variety of ways we can gather money, from embezzling from state governments, to securing industrial support, to membership dues.
 
-Dues are based on the amount of dissent in the party. The amount of resources the party gets at the end of the year is reduced by dissent. 
+Dues are based on the amount of dissent in the party. The amount of resources the party gets at the end of the year is reduced by dissent.
 
 - @maintain: Maintain our current dues.
 - @reduce: Reduce dues.
 - @increase: Increase dues.
-- @increase_high: Increase dues
+- @increase_high: Increase dues further
 - @industrial: Secure a loan from the industrialists
+- @state_government: Embezzle money from the Prussian State Government
 - @easy_discard
 
-@maintain
-subtitle: We will gain [+ dues +] resources a year
+---
 
-We maintain our current dues.
+@maintain
+subtitle: We will gain [+ dues +] resources a year.
+
+We will maintain our current dues.
+
+---
 
 @reduce
-subtitle:  We will gain [+ dues - 1 +] resources a year.
+subtitle: We will gain [+ dues - 1 +] resources a year.
 choose-if: dues > 1
-on-arrival: dues -= 1; left_dissent -= 8; center_dissent -= 8; christian_dissent -= 8; clerical_dissent -= 8; right_dissent -= 8
+on-arrival:
+  dues -= 1
+  left_dissent -= 8
+  center_dissent -= 8
+  christian_dissent -= 8
+  clerical_dissent -= 8
+  right_dissent -= 8
 
-Our current members appreciate this, but no one decides to join a party because of the low dues.
+Our current members appreciate this gesture, but no one decides to join a party because of the low dues.
+
+---
 
 @increase
-subtitle: We will gain [+ dues + 1 +] resources a year. 
-on-arrival: dues += 1; catholics_z -= 5; workers_z -= 4; new_middle_z -= 4; old_middle_z -= 4; left_dissent += 5; center_dissent += 5; christian_dissent += 5; clerical_dissent += 5; right_dissent += 5; 
+subtitle: We will gain [+ dues + 1 +] resources a year.
 view-if: dues < 5
+on-arrival:
+  dues += 1
+  catholics_z -= 5
+  workers_z -= 4
+  new_middle_z -= 4
+  old_middle_z -= 4
+  left_dissent += 5
+  center_dissent += 5
+  christian_dissent += 5
+  clerical_dissent += 5
+  right_dissent += 5
 
-Our members grumble at this, and some of the less committed members leave. But now, we will have access to additional resources. 
+Our members grumble at this, and some of the less committed members leave. But now, we will have access to additional resources.
+
+---
 
 @increase_high
-view-if: dues == 5
-on-arrival: dues += 1; catholics_z -= 9; workers_z -= 8; new_middle_z -= 6; old_middle_z -= 6; left_dissent += 8; center_dissent += 8; christian_dissent += 8; clerical_dissent += 8; right_dissent += 8;
+subtitle: We will gain [+ dues + 1 +] resources a year. Dues are already high; this may cost members.
+view-if: dues >= 5
+on-arrival:
+  dues += 1
+  catholics_z -= 9
+  workers_z -= 8
+  new_middle_z -= 6
+  old_middle_z -= 6
+  left_dissent += 8
+  center_dissent += 8
+  christian_dissent += 8
+  clerical_dissent += 8
+  right_dissent += 8
 
-Increasing our already high dues has outraged the membership. Many leave and all factions of the party voice significant dissent. At least we have strong finances? 
+Increasing our already high dues has outraged the membership. Many leave, and all factions voice significant dissent. At least the finances are strong?
+
+---
 
 @industrial
 subtitle: The industrialists have traditionally prioritized the liberal parties. Maybe that can change? +2 resources
-choose-if: dvp_relation >= 55
-unavailable-subtitle: The industrialists don't trust us enough as we lack enough relations with the DVP. 
-on-arrival: resources += 2; old_middle_z += 3; workers_z -= 8; left_dissent += 8;
+choose-if: dvp_relation >= 50
+unavailable-subtitle: The industrialists do not trust us enough as our relations with the DVP are insufficient.
+on-arrival:
+  resources += 2
+  old_middle_z += 3
+  workers_z -= 8
+  left_dissent += 8
 
-Surprisingly, the industrialists have agreed to provide some financial aid to the party albiet not as much as the gold and silver flooding into the liberal parties. However, this has absolutely enraged the workers who now see us as industrial puppets like the DVP. The left of the party has voiced strong discontent. 
-
-
+Surprisingly, the industrialists have agreed to provide some financial aid to the party. However, this has enraged many workers, who now see us as industrial puppets like the DVP. The party’s left wing voices strong discontent
