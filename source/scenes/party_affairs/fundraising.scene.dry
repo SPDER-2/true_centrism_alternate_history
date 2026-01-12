@@ -20,76 +20,36 @@ Dues are based on the amount of dissent in the party. The amount of resources th
 - @industrial: Secure a loan from the industrialists
 - @easy_discard
 
----
-
 @maintain
 subtitle: We will gain [+ dues +] resources a year.
 
 We will maintain our current dues.
 
----
-
 @reduce
 subtitle: We will gain [+ dues - 1 +] resources a year.
 choose-if: dues > 1
-on-arrival:
-  dues -= 1
-  left_dissent -= 8
-  center_dissent -= 8
-  christian_dissent -= 8
-  clerical_dissent -= 8
-  right_dissent -= 8
+on-arrival: dues -= 1; left_dissent -= 8; center_dissent -= 8; christian_dissent -= 8; clerical_dissent -= 8; right_dissent -= 8;
 
 Our current members appreciate this gesture, but no one decides to join a party because of the low dues.
-
----
 
 @increase
 subtitle: We will gain [+ dues + 1 +] resources a year.
 view-if: dues < 5
-on-arrival:
-  dues += 1
-  catholics_z -= 5
-  workers_z -= 4
-  new_middle_z -= 4
-  old_middle_z -= 4
-  left_dissent += 5
-  center_dissent += 5
-  christian_dissent += 5
-  clerical_dissent += 5
-  right_dissent += 5
+on-arrival: dues += 1; catholics_z -= 5; workers_z -= 4; new_middle_z -= 4; old_middle_z -= 4; left_dissent += 5; center_dissent += 5; christian_dissent += 5; clerical_dissent += 5; right_dissent += 5;
 
 Our members grumble at this, and some of the less committed members leave. But now, we will have access to additional resources.
-
----
 
 @increase_high
 subtitle: We will gain [+ dues + 1 +] resources a year. Dues are already high; this may cost members.
 view-if: dues >= 5
-on-arrival:
-  dues += 1
-  catholics_z -= 9
-  workers_z -= 8
-  new_middle_z -= 6
-  old_middle_z -= 6
-  left_dissent += 8
-  center_dissent += 8
-  christian_dissent += 8
-  clerical_dissent += 8
-  right_dissent += 8
+on-arrival: dues += 1; catholics_z -= 9; workers_z -= 8; new_middle_z -= 6; old_middle_z -= 6; left_dissent += 8; center_dissent += 8; christian_dissent += 8; clerical_dissent += 8; right_dissent += 8
 
 Increasing our already high dues has outraged the membership. Many leave, and all factions voice significant dissent. At least the finances are strong?
-
----
 
 @industrial
 subtitle: The industrialists have traditionally prioritized the liberal parties. Maybe that can change? +2 resources
 choose-if: dvp_relation >= 50
 unavailable-subtitle: The industrialists do not trust us enough as our relations with the DVP are insufficient.
-on-arrival:
-  resources += 2
-  old_middle_z += 3
-  workers_z -= 8
-  left_dissent += 8
+on-arrival: resources += 2; old_middle_z += 3; workers_z -= 8; left_dissent += 8
 
 Surprisingly, the industrialists have agreed to provide some financial aid to the party. However, this has enraged many workers, who now see us as industrial puppets like the DVP. The party’s left wing voices strong discontent
